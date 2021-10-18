@@ -1,9 +1,6 @@
 import React from "react";
-import "./HomeComponent.styles.css";
+import "./HomeComponent.styles.scss";
 import { Link } from "react-router-dom";
-
-
-
 
 const HomeComponent = () => (
   <>

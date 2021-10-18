@@ -13,38 +13,36 @@
   border-radius: 0.5rem;
   padding: 1rem;
   position: relative;
-}
 
-.card textarea {
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: none;
-  background-color: #e1ebfd;
-  color: #271c6c;
-  height: 70%;
-}
-.card textarea:disabled {
-  background-color: transparent;
-}
+  .btns {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    button {
+      border-radius: 20%;
+      border: none;
+      margin: 0 0.6rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #271c6c;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 
-.card .btns {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-.card .btns button {
-  border-radius: 20%;
-  border: none;
-  margin: 0 0.6rem;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: #271c6c;
-  background-color: transparent;
-}
-
-.card .btns button:focus {
-  outline: none;
+  textarea {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #e1ebfd;
+    color: #271c6c;
+    height: 70%;
+    &:disabled {
+      background-color: transparent;
+    }
+  }
 }
 
 .completed {

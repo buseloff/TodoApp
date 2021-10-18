@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
-import "./TodoItem.styles.css";
+import "./TodoItem.styles.scss";
 
 const TodoItem = (props) => {
   const { item, updateTodo, removeTodo, completeTodo } = props;

@@ -9,24 +9,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import USERS_DATA from "../../db/users.data";
-import { connect } from "react-redux";
-import { addUser } from "../../redux/user-reducer/user.reducer";
+import { useDispatch } from "react-redux";
+import { userAdded } from "../../redux/user-reducer/user.reducer";
 
 const theme = createTheme();
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addUser: (user) => dispatch(addUser(user)),
-  };
-};
-
-function SignInComponent(props) {
+function SignInComponent() {
+  const dispatch = useDispatch();
+  const userAdd = (user) => dispatch(userAdded(user));
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -35,7 +25,7 @@ function SignInComponent(props) {
     );
 
     if (found_user && found_user.password === data.get("password")) {
-      props.addUser({
+      userAdd({
         id: found_user.id,
         username: found_user.username,
         name: found_user.name,
@@ -105,4 +95,4 @@ function SignInComponent(props) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInComponent);
+export default SignInComponent;

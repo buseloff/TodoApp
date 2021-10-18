@@ -1,5 +1,5 @@
 import React from "react";
-import "./TodosComponent.styles.css";
+import "./TodosComponent.styles.scss";
 import DisplayTodos from "../DisplayTodos/DisplayTodos";
 import AddTodo from "../AddTodo/AddTodo";
 

@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addTodo } from "../../redux/todo-reducer/todo.reducer";
+import { useSelector, useDispatch } from "react-redux";
+import { todoAdded } from "../../redux/todo-reducer/todo.reducer";
 import { GoPlus } from "react-icons/go";
-import "./AddTodo.styles.css";
+import "./AddTodo.styles.scss";
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-    user: state.user,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (item) => dispatch(addTodo(item)),
-  };
-};
-
-const AddTodo = (props) => {
+const AddTodo = () => {
   const [todo, setTodo] = useState("");
+  const todos = useSelector((state) => state.todos);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const todoAdd = (item) => dispatch(todoAdded(item));
 
   const handleChange = (e) => {
     setTodo(e.target.value);
@@ -28,14 +19,11 @@ const AddTodo = (props) => {
     if (todo === "") {
       alert("Input is Empty");
     } else {
-      console.log(props.user.id);
-      props.addTodo({
-        id: props.todos.length
-          ? Math.max(...props.todos.map((el) => el.id)) + 1
-          : 1,
+      todoAdd({
+        id: todos.length ? Math.max(...todos.map((el) => el.id)) + 1 : 1,
         item: todo,
         completed: false,
-        userId: props.user.id,
+        userId: user.id,
       });
       setTodo("");
     }
@@ -58,4 +46,4 @@ const AddTodo = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+export default AddTodo;
